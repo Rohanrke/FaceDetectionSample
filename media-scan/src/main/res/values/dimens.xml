@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_large">8dp</dimen>
+    <dimen name="padding_normal">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="progress_size_medium">48dp</dimen>
+    <dimen name="image_size">120dp</dimen>
+    <dimen name="text_view_size">24dp</dimen>
+</resources>

@@ -21,3 +21,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "FaceDetectionSample"
 include(":app")
+include(":media-scan-kit")
+include(":media-scan")
+include(":base")
+include(":data")
+include(":domain")
