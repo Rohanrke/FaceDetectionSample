@@ -2,13 +2,15 @@ package com.rohan.face.detection.data.repo
 
 import com.rohan.face.detection.data.dao.FeedDao
 import com.rohan.face.detection.data.entity.FeedEntity
+import com.rohan.face.detection.domain.EntityToModelMapper
+import com.rohan.face.detection.domain.ModelToEntityMapper
 import com.rohan.face.detection.domain.PhotoFeedRepo
 import com.rohan.face.detection.domain.model.FeedModel
 
 class PhotoFeedRepoImpl(
     private val dao: FeedDao,
-    private val entityMapper: FeedModelToEntityMapper,
-    private val modelMapper: FeedEntityToModelMapper
+    private val entityMapper: ModelToEntityMapper<FeedModel, FeedEntity>,
+    private val modelMapper: EntityToModelMapper<FeedEntity, FeedModel>
 ) : PhotoFeedRepo {
 
     override suspend fun getAllFeed(): List<FeedModel> {

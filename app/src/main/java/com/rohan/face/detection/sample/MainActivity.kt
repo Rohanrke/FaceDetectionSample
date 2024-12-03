@@ -12,12 +12,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.rohan.face.detection.media.scan.MediaScanKitImpl
 import com.rohan.face.detection.media.scan.kit.MediaScanKit
 import com.rohan.face.detection.sample.ui.theme.FaceDetectionSampleTheme
+import javax.inject.Inject
 
 class MainActivity : ComponentActivity() {
-    private val mediaScanKit: MediaScanKit = MediaScanKitImpl()
+
+    @Inject
+    lateinit var mediaScanKit: MediaScanKit
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

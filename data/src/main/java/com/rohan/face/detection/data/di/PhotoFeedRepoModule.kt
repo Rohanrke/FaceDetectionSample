@@ -32,8 +32,8 @@ class PhotoFeedRepoModule {
     @Provides
     fun providePhotoFeedRepository(
         feedDao: FeedDao,
-        entityMapper: FeedModelToEntityMapper,
-        modelMapper: FeedEntityToModelMapper
+        entityMapper: ModelToEntityMapper<FeedModel, FeedEntity>,
+        modelMapper: EntityToModelMapper<FeedEntity, FeedModel>
     ): PhotoFeedRepo {
         return PhotoFeedRepoImpl(feedDao, entityMapper, modelMapper)
     }

@@ -2,12 +2,8 @@ package com.rohan.face.detection.media.scan.ui
 
 import android.Manifest
 import android.content.ContentUris
-import android.content.Context
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.ImageDecoder
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
@@ -17,14 +13,11 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.mediapipe.tasks.vision.core.RunningMode
 import com.rohan.face.detection.base.BaseNavActivity
-import com.rohan.face.detection.media.scan.FaceDetectorHelper
 import com.rohan.face.detection.media.scan.R
 import com.rohan.face.detection.media.scan.databinding.ActivityPhotoFeedBinding
 import com.rohan.face.detection.media.scan.di.AppComponentProvider
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

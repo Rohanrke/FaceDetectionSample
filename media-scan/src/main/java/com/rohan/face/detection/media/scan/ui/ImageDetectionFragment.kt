@@ -148,6 +148,5 @@ class ImageDetectionFragment: Fragment(), FaceDetectorHelper.DetectorListener  {
             }
             return fragment
         }
-
     }
 }

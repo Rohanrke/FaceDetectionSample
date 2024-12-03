@@ -47,7 +47,7 @@ class PhotoFeedViewModel(
         }
     }
 
-    fun addNameTag(model: FeedModel){
+    fun addNameTag(model: FeedModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repo.updateFeed(model)
         }
@@ -60,108 +60,4 @@ class PhotoFeedViewModel(
     ) {
         TODO("Not yet implemented")
     }
-
-    /*
-
-     private fun runDetectionOnImage(uri: Uri) {
-         setUiEnabled(false)
-         backgroundExecutor = Executors.newSingleThreadScheduledExecutor()
-         updateDisplayView(MediaType.IMAGE)
-         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-             val source = ImageDecoder.createSource(
-                 baseContext.contentResolver,
-                 uri
-             )
-             ImageDecoder.decodeBitmap(source)
-         } else {
-             MediaStore.Images.Media.getBitmap(
-                 baseContext.contentResolver,
-                 uri
-             )
-         }
-             .copy(Bitmap.Config.ARGB_8888, true)
-             ?.let { bitmap ->
-                 fragmentGalleryBinding.imageResult.setImageBitmap(bitmap)
-
-                 // Run face detection on the input image
-                 backgroundExecutor.execute {
-
-                     faceDetectorHelper =
-                         FaceDetectorHelper(
-                             context = baseContext,
-                             threshold = viewModel.currentThreshold,
-                             currentDelegate = viewModel.currentDelegate,
-                             runningMode = RunningMode.IMAGE,
-                             faceDetectorListener = this
-                         )
-
-                     faceDetectorHelper.detectImage(bitmap)
-                         ?.let { resultBundle ->
-                             activity?.runOnUiThread {
-                                 fragmentGalleryBinding.overlay.setResults(
-                                     resultBundle.results[0],
-                                     bitmap.height,
-                                     bitmap.width
-                                 )
-
-                                 setUiEnabled(true)
-                                 fragmentGalleryBinding.bottomSheetLayout.inferenceTimeVal.text =
-                                     String.format(
-                                         "%d ms",
-                                         resultBundle.inferenceTime
-                                     )
-                             }
-                         } ?: run {
-                         Log.e(TAG, "Error running face detection.")
-                     }
-
-                     faceDetectorHelper.clearFaceDetector()
-                 }
-             }
-     }
-
-     // Check the type of media that user selected.
-     private fun loadMediaType(uri: Uri): MediaType {
-         val mimeType = context?.contentResolver?.getType(uri)
-         mimeType?.let {
-             if (mimeType.startsWith("image")) return MediaType.IMAGE
-             if (mimeType.startsWith("video")) return MediaType.VIDEO
-         }
-
-         return MediaType.UNKNOWN
-     }
-
-     private fun detectError() {
-         activity?.runOnUiThread {
-             fragmentGalleryBinding.progress.visibility = View.GONE
-             setUiEnabled(true)
-             updateDisplayView(MediaType.UNKNOWN)
-         }
-     }
-
-     override fun onError(error: String, errorCode: Int) {
-         detectError()
-         activity?.runOnUiThread {
-             Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
-             if (errorCode == FaceDetectorHelper.GPU_ERROR) {
-                 fragmentGalleryBinding.bottomSheetLayout.spinnerDelegate.setSelection(
-                     FaceDetectorHelper.DELEGATE_CPU, false
-                 )
-             }
-         }
-     }
-
-     override fun onResults(resultBundle: FaceDetectorHelper.ResultBundle) {
-         // no-op
-     }
-
-     enum class MediaType {
-         IMAGE,
-         VIDEO,
-         UNKNOWN
-     }
-
-     */
-
-
 }

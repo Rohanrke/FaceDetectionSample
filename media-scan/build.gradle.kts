@@ -1,5 +1,8 @@
+import de.undercouch.gradle.tasks.download.Download
+
 plugins {
     id("kotlin-kapt")
+    id("de.undercouch.download") version "5.6.0"
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
 }
@@ -38,6 +41,20 @@ android {
     }
 }
 
+// Define ASSET_DIR as a project property
+val ASSET_DIR = "$projectDir/src/main/assets"
+
+// Apply the external download models script
+tasks.register<Download>("downloadModelFile") {
+    src("https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite")
+    dest(file("$ASSET_DIR/face_detection_short_range.tflite"))
+    overwrite(false)
+}
+
+tasks.named("preBuild") {
+    dependsOn("downloadModelFile")
+}
+
 dependencies {
     implementation(project(":base"))
     implementation(project(":data"))
@@ -56,6 +73,8 @@ dependencies {
 
     implementation(libs.material)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
+    testImplementation(libs.mockitoCore)
+    testImplementation(libs.mockitoKotlin)
+    testImplementation(libs.kotlinxCoroutinesTest)
     androidTestImplementation(libs.androidx.espresso.core)
 }

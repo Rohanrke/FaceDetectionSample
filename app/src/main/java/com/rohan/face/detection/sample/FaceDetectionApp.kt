@@ -5,7 +5,6 @@ import android.content.Context
 import com.rohan.face.detection.media.scan.di.AppComponentProvider
 import com.rohan.face.detection.media.scan.di.PhotoFeedComponent
 import com.rohan.face.detection.sample.di.AppComponent
-import com.rohan.face.detection.sample.di.AppModule
 import com.rohan.face.detection.sample.di.DaggerAppComponent
 
 class FaceDetectionApp: Application(), AppComponentProvider {

@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment
 import com.rohan.face.detection.media.scan.R
 import com.rohan.face.detection.media.scan.databinding.DialogAddNameTagBinding
 
-class AddNameTagDialogFragment: DialogFragment() {
+class AddNameTagDialogFragment : DialogFragment() {
 
     private var listener: OnTagSaveListener? = null
 
@@ -24,7 +24,7 @@ class AddNameTagDialogFragment: DialogFragment() {
         const val TAG = "AddNameTagDialogFragment"
         fun newInstance(faceId: Uri): AddNameTagDialogFragment {
             val fragment = AddNameTagDialogFragment()
-            fragment.arguments =  Bundle().apply {
+            fragment.arguments = Bundle().apply {
                 putParcelable("FACE_ID", faceId)
             }
             return fragment
@@ -55,7 +55,7 @@ class AddNameTagDialogFragment: DialogFragment() {
         return binding.root
     }
 
-    fun setOnTagSaveListener(listener: OnTagSaveListener){
+    fun setOnTagSaveListener(listener: OnTagSaveListener) {
         this.listener = listener
     }
 
@@ -71,5 +71,4 @@ class AddNameTagDialogFragment: DialogFragment() {
         // Optional: Add popup-style animations
         dialog?.window?.setWindowAnimations(R.style.DialogPopupAnimation)
     }
-
 }

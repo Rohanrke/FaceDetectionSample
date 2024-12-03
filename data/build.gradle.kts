@@ -50,6 +50,9 @@ dependencies {
     kapt(libs.daggerCompiler)
     kapt(libs.roomCompiler)
     testImplementation(libs.junit)
+    testImplementation(libs.mockitoCore)
+    testImplementation(libs.mockitoKotlin)
+    testImplementation(libs.kotlinxCoroutinesTest)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

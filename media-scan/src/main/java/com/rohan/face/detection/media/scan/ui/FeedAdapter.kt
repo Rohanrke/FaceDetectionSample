@@ -1,12 +1,7 @@
 package com.rohan.face.detection.media.scan.ui
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.ImageDecoder
 import android.net.Uri
-import android.os.Build
-import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,11 +11,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rohan.face.detection.domain.model.FeedModel
-import com.rohan.face.detection.media.scan.FaceDetectorHelper
 import com.rohan.face.detection.media.scan.R
 import com.rohan.face.detection.media.scan.databinding.ItemFeedBinding
-import java.util.concurrent.Executors
-import java.util.concurrent.ScheduledExecutorService
 
 class FeedAdapter(
     private val context: Context,
@@ -55,7 +47,7 @@ class FeedAdapter(
             onLongClick(imageModel)
         }
 
-       holder.itemViewBinding.root.setOnLongClickListener {
+        holder.itemViewBinding.root.setOnLongClickListener {
             // open dialog to update
             val dialogFragment = AddNameTagDialogFragment.newInstance(imageModel.uri)
             dialogFragment.setOnTagSaveListener(object :
@@ -72,12 +64,8 @@ class FeedAdapter(
         }
     }
 
-    // Method to check if the image is currently visible
-    private fun RecyclerView.ViewHolder.isImageVisible(): Boolean {
-        return itemView.isShown && itemView.bottom > 0 && itemView.top < itemView.context.resources.displayMetrics.heightPixels
-    }
-
-    class FeedViewHolder(val itemViewBinding: ItemFeedBinding) : RecyclerView.ViewHolder(itemViewBinding.root)
+    class FeedViewHolder(val itemViewBinding: ItemFeedBinding) :
+        RecyclerView.ViewHolder(itemViewBinding.root)
 
     internal class ImageDiffCallback : DiffUtil.ItemCallback<FeedModel>() {
         override fun areItemsTheSame(oldItem: FeedModel, newItem: FeedModel): Boolean {
@@ -88,5 +76,4 @@ class FeedAdapter(
             return oldItem == newItem
         }
     }
-
 }

@@ -1,11 +1,13 @@
 package com.rohan.face.detection.sample.di
 
-import android.app.Application
-import android.content.Context
+import com.rohan.face.detection.media.scan.MediaScanKitImpl
+import com.rohan.face.detection.media.scan.kit.MediaScanKit
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
 
 @Module
 object AppModule {
+
+    @Provides
+    fun provideMediaScanKit(): MediaScanKit = MediaScanKitImpl()
 }
