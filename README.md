@@ -44,5 +44,8 @@ This is a PhotoFeed app that captures images from gallery
     2. LongClick -- PopUp will open for Add Tag Task
     Unit Test written for Repository Layer only
 
+## Demo
+[Download the Face Detection Demo](demo/face_detection_demo.mp4)
+
     
    
