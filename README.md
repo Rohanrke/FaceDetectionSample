@@ -44,5 +44,12 @@ This is a PhotoFeed app that captures images from gallery
     2. LongClick -- PopUp will open for Add Tag Task
     Unit Test written for Repository Layer only
 
+    MainActivity in app moudle acts as a Splash/ Launching Activity.
+    Feature Screen (PhotoFeedActivity) is being launched from MainActivity using media-scan-kit.
+    
+
+## Demo
+[Download the Face Detection Demo](demo/face_detection_demo.mp4)
+
     
    
