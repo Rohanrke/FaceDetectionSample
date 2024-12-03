@@ -12,14 +12,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.rohan.face.detection.media.scan.MediaScanKitImpl
 import com.rohan.face.detection.media.scan.kit.MediaScanKit
 import com.rohan.face.detection.sample.ui.theme.FaceDetectionSampleTheme
-import javax.inject.Inject
+
 
 class MainActivity : ComponentActivity() {
 
-    @Inject
-    lateinit var mediaScanKit: MediaScanKit
+   // Can get this from DI Also
+    private val mediaScanKit: MediaScanKit = MediaScanKitImpl()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

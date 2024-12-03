@@ -13,6 +13,9 @@ interface FeedDao {
     @Query("SELECT * FROM feed_table ORDER BY last_updated_time_stamp DESC")
     fun getAllImages(): List<FeedEntity>
 
+    @Query("SELECT COUNT(*) FROM feed_table")
+    fun getCount(): Int
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertImages(images: List<FeedEntity>): List<Long>
 

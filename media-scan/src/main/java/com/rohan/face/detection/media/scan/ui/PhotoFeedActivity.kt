@@ -41,7 +41,6 @@ class PhotoFeedActivity : BaseNavActivity<PhotoFeedViewModel, PhotoFeedNavEvents
         setUpUI()
         observeEvents()
         viewModel.fetchAllFeeds()
-        checkAndRequestPermission()
     }
 
     private fun setUpDI() {
@@ -88,17 +87,19 @@ class PhotoFeedActivity : BaseNavActivity<PhotoFeedViewModel, PhotoFeedNavEvents
                 // Check if the feed list is not null before updating the adapter
                 if (!feedList.isNullOrEmpty()) {
                     feedAdapter.submitList(feedList) // Update the adapter with the new list
+                } else {
+                    checkAndRequestPermission()
                 }
             }
         }
     }
 
     private fun checkAndRequestPermission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES)
-            == PackageManager.PERMISSION_GRANTED
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_MEDIA_IMAGES
+            ) != PackageManager.PERMISSION_GRANTED
         ) {
-            lazyLoadImagesFromGalley()
-        } else {
             requestPermissionLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES)
         }
     }

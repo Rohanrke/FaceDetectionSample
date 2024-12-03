@@ -37,7 +37,7 @@ class FeedAdapter(
             .into(holder.itemViewBinding.imageView)
 
         // Set nameTag if available
-        imageModel.nameTag?.isNotBlank()?.let {
+        imageModel.nameTag?.isNotEmpty()?.let {
             holder.itemViewBinding.nameTag.text = imageModel.nameTag
             holder.itemViewBinding.nameTag.visibility = View.VISIBLE
         }
@@ -73,7 +73,7 @@ class FeedAdapter(
         }
 
         override fun areContentsTheSame(oldItem: FeedModel, newItem: FeedModel): Boolean {
-            return oldItem == newItem
+            return oldItem.nameTag == newItem.nameTag
         }
     }
 }

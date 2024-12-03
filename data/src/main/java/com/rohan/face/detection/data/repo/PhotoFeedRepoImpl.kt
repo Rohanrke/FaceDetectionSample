@@ -13,6 +13,11 @@ class PhotoFeedRepoImpl(
     private val modelMapper: EntityToModelMapper<FeedEntity, FeedModel>
 ) : PhotoFeedRepo {
 
+    override suspend fun hasFeed(): Boolean {
+        val count = dao.getCount()
+        return count > 0
+    }
+
     override suspend fun getAllFeed(): List<FeedModel> {
         val list = mutableListOf<FeedModel>()
         dao.getAllImages().forEach {
@@ -32,8 +37,9 @@ class PhotoFeedRepoImpl(
         return getAllFeed()
     }
 
-    override suspend fun updateFeed(feedModel: FeedModel) {
+    override suspend fun updateFeed(feedModel: FeedModel): List<FeedModel> {
         val entity = entityMapper.map(feedModel)
         dao.updateImage(entity)
+        return getAllFeed()
     }
 }

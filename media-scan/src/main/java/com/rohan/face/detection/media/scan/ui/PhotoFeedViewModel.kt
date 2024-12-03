@@ -21,7 +21,7 @@ class PhotoFeedViewModel(
     private val _feedList = MutableStateFlow<List<FeedModel>?>(null)
     val feedList: StateFlow<List<FeedModel>?> get() = _feedList
 
-    private val _showLoading = MutableLiveData<Boolean>(false)
+    private val _showLoading = MutableLiveData(false)
     val showLoading: LiveData<Boolean> get() = _showLoading
 
     fun fetchAllFeeds() {
@@ -49,7 +49,8 @@ class PhotoFeedViewModel(
 
     fun addNameTag(model: FeedModel) {
         viewModelScope.launch(Dispatchers.IO) {
-            repo.updateFeed(model)
+            val updatedModel = model.copy(lastUpdatedTimeStamp = System.currentTimeMillis())
+            _feedList.value = repo.updateFeed(updatedModel)
         }
     }
 
